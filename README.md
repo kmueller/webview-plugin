@@ -1,5 +1,7 @@
 # Juce 8 Audio Plugin Template including WebViews
 
+This template is a remake based on the YouTube video by WolfSound: https://www.youtube.com/watch?v=0ALLRitFE34
+
 Status: in work (August 2025)
 
 ## Prerequisites
