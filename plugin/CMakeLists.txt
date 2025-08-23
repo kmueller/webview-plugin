@@ -12,7 +12,7 @@ juce_add_plugin(Juce8WebViewPlugin
     PRODUCT_NAME "Juce8WebViewPlugin"
 
     # NEEDS_WEB_BROWSER TRUE
-    # NEEDS_WEBVIEW2 TRUE
+    NEEDS_WEBVIEW2 TRUE
 )
 
 target_sources(Juce8WebViewPlugin
@@ -36,5 +36,5 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
         # This will enable WebView2 as the WebView backend on Windows
-        #JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
+        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
 )
