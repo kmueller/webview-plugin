@@ -38,3 +38,11 @@ target_compile_definitions(${PROJECT_NAME}
         # This will enable WebView2 as the WebView backend on Windows
         JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
 )
+
+# Folder where web UI data reside
+set(WEBVIEW_FILES_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ui/public")
+
+# Copy JUCE frontend library to plugin UI files
+file(COPY "${JUCE_MODULES_DIR}/juce_gui_extra/native/javascript/" DESTINATION "${WEBVIEW_FILES_SOURCE_DIR}/js/juce/")
+
+add_compile_definitions(JUCE_DEBUG=1)
