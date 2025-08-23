@@ -15,6 +15,16 @@ juce_add_plugin(Juce8WebViewPlugin
     NEEDS_WEBVIEW2 TRUE
 )
 
+# For initialisation purposes (will be displayed in WebView as Plugin information)
+# (Example to send data from C++ to Javascript)
+get_target_property(PRODUCT_NAME ${PROJECT_NAME} JUCE_PRODUCT_NAME)
+get_target_property(COMPANY_NAME ${PROJECT_NAME} JUCE_COMPANY_NAME)
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+  JUCE_PRODUCT_NAME="${PRODUCT_NAME}"
+  JUCE_COMPANY_NAME="${COMPANY_NAME}"
+  JUCE_PRODUCT_VERSION="${PROJECT_VERSION}")
+
+
 target_sources(Juce8WebViewPlugin
     PRIVATE source/PluginEditor.cpp source/PluginProcessor.cpp
 )

@@ -57,7 +57,11 @@ namespace {}
                                                   .withBackgroundColour(juce::Colours::white))
                       .withResourceProvider([this](const auto &url)
                                             { return getResource(url); })
-                        .withNativeIntegrationEnabled()}
+                      .withNativeIntegrationEnabled()
+                      .withInitialisationData("vendor", JUCE_COMPANY_NAME)
+                      .withInitialisationData("pluginName", JUCE_PRODUCT_NAME)
+                      .withInitialisationData("pluginVersion", JUCE_PRODUCT_VERSION)
+                    }
     {
         juce::ignoreUnused(processorRef);
 

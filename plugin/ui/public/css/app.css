@@ -1,0 +1,12 @@
+.site {
+    min-height: 98dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+footer {
+    background-color: lightgrey;
+    padding: 5px;
+    margin: 0;
+}
