@@ -2,7 +2,7 @@
 
 This template is a remake based on the YouTube video by WolfSound: https://www.youtube.com/watch?v=0ALLRitFE34 resp. https://github.com/JanWilczek/juce-webview-tutorial
 
-Status: in work (August 2025)
+Status: August 2025
 
 ## Prerequisites
 
@@ -25,9 +25,9 @@ Replace/adjust all occurancies of "Juce8WebView..." by your own Plugin-Name:
 - PLUGIN_MANUFACTURER_CODE (4 chars)
 - PLUGIN_CODE (4 chars)
 
-## Build and Run
+## Build the plugin
 
-Execute this after changes of CMakeLists.txt files
+Execute this command in a Terminal after changes of CMakeLists.txt files
 
 ```
 cmake -S . -B build
@@ -38,6 +38,18 @@ Execute this to compile and build source code
 ```
 cmake --build build
 ```
+
+## Usage of local development server
+
+According to https://www.youtube.com/watch?v=Ub-v__G0IFQ this template uses a local development server in order to let the plugin run.
+
+Open a separate Terminal in the subfolder plugin/ui/public and start the server (running on http://127.0.0.1:8080):
+
+```
+npx http-server
+```
+
+## Run the plugin
 
 Test plugin as Standalone on MacOS:
 
@@ -51,7 +63,7 @@ Test plugin as Standalone on Windows:
 /build/plugin/<your-plugin-name>_artefacts/Standalone/<your-plugin-name>Plugin.exe
 ```
 
-## MacOS: Release as VST3 Plugin and test in Ableton Live
+## Test-Release (MacOS) of VST3 Plugin in Ableton Live
 
 ### Build Artefacts
 

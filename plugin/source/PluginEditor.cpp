@@ -41,9 +41,9 @@ namespace webview_plugin
             jassertfalse;
             return "";
         }
-    } // namespace
 
-namespace {}
+        constexpr auto LOCAL_DEV_SERVER_ADDRESS = "http://127.0.0.1:8080";
+    } // namespace
 
     //==============================================================================
     AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(AudioPluginAudioProcessor &p)
@@ -67,8 +67,8 @@ namespace {}
 
         addAndMakeVisible(webView);
 
-        // webView.goToURL("https://juce.com");
-        webView.goToURL(webView.getResourceProviderRoot());
+        webView.goToURL(LOCAL_DEV_SERVER_ADDRESS);
+        //webView.goToURL(webView.getResourceProviderRoot());
 
         setResizable(true, true);
         setSize(800, 600);
@@ -84,20 +84,25 @@ namespace {}
         webView.setBounds(getLocalBounds());
     }
 
-    auto AudioPluginAudioProcessorEditor::getResource(const juce::String &url) -> std::optional<Resource>
+    auto AudioPluginAudioProcessorEditor::getResource(const juce::String &url) 
+        -> std::optional<Resource>
     {
         std::cout << url << std::endl;
 
-        static const auto resourceFileRoot = juce::File{R"(/Users/kaimueller/Documents/Development/juce-projects/webview-plugin/plugin/ui/public)"};
+        static const auto resourceFileRoot = 
+            juce::File{R"(<absolute-path-to-your-project>/webview-plugin/plugin/ui/public)"};
 
         // Relative path
-        const auto resourceToRetrieve = url == "/" ? "index.html" : url.fromFirstOccurrenceOf("/", false, false);
+        const auto resourceToRetrieve = 
+            url == "/" ? "index.html" : url.fromFirstOccurrenceOf("/", false, false);
 
-        const auto resource = resourceFileRoot.getChildFile(resourceToRetrieve).createInputStream();
+        const auto resource = 
+            resourceFileRoot.getChildFile(resourceToRetrieve).createInputStream();
 
         if (resource)
         {
-            const auto extension = resourceToRetrieve.fromFirstOccurrenceOf(".", false, false);
+            const auto extension = 
+                resourceToRetrieve.fromFirstOccurrenceOf(".", false, false);
             return Resource{streamToVector(*resource), getMimeForExtension(extension)};
         }
 
